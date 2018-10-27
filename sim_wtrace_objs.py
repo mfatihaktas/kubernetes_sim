@@ -4,7 +4,7 @@ from operator import itemgetter
 
 from utils import is_any_nan
 from rvs import *
-from log import *
+from log_utils import *
 
 def min_pod_lifetime(pod):
   return pod.cpu_totaldemand/pod.mean_cpu_demandperslot*SCHING_ROUND_LENGTH

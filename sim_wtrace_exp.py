@@ -205,7 +205,7 @@ def plot_sching_wrt_requested_vs_predicted():
   fig, axs = plot.subplots(1, 4)
   def plot_(sching_m, w_prediction, label=None):
     sinfo_m['w_prediction'] = w_prediction
-    print("sching_m= {}".format(sching_m) )
+    blog(w_prediction=w_prediction, sching_m=sching_m)
     
     ar_l = []
     drop_rate_l, evict_rate_l, avg_slowdown_l = [], [], []
@@ -236,7 +236,8 @@ def plot_sching_wrt_requested_vs_predicted():
       max_mem_util_l.append(sim_m['max_mem_util'] )
       avg_mem_util_l.append(sim_m['avg_mem_util'] )
     
-    blog(drop_rate_l=drop_rate_l, evict_rate_l=evict_rate_l,
+    blog(sinfo_m=sinfo_m, sching_m=sching_m,
+      drop_rate_l=drop_rate_l, evict_rate_l=evict_rate_l,
       max_cpu_util_l=max_cpu_util_l, avg_cpu_util_l=avg_cpu_util_l,
       max_mem_util_l=max_mem_util_l, avg_mem_util_l=avg_mem_util_l)
     
@@ -256,10 +257,10 @@ def plot_sching_wrt_requested_vs_predicted():
     plot.plot(ar_l, avg_mem_util_l, color=color, label=label, marker=marker, lw=2, ls=':', mew=2)
     plot.ylim(ymin=0)
   
-  # plot_({'type': 'spreading', 'wrt': 'sched'}, w_prediction=True, label='w/ prediction')
-  # plot_({'type': 'spreading', 'wrt': 'sched'}, w_prediction=False, label='w/o prediction')
-  plot_({'type': 'packing', 'wrt': 'sched'}, w_prediction=True, label='w/ prediction')
-  plot_({'type': 'packing', 'wrt': 'sched'}, w_prediction=False, label='w/o prediction')
+  plot_({'type': 'spreading', 'wrt': 'sched'}, w_prediction=True, label='w/ prediction')
+  plot_({'type': 'spreading', 'wrt': 'sched'}, w_prediction=False, label='w/o prediction')
+  # plot_({'type': 'packing', 'wrt': 'sched'}, w_prediction=True, label='w/ prediction')
+  # plot_({'type': 'packing', 'wrt': 'sched'}, w_prediction=False, label='w/o prediction')
   
   
   # print("\n*** w_dynamicreqed")
